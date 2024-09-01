@@ -74,7 +74,7 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h 172.31.38.51 -uroot -pExpenseApp@1 < /app/schema/backend.sql
 VALIDATE $? "Schema loading"
 
 systemctl daemon-reload
