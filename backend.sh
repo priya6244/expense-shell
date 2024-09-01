@@ -77,8 +77,8 @@ VALIDATE $? "Installing MySQL Client"
 mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 VALIDATE $? "Schema loading"
 
-# systemctl daemon-reload &>>$LOG_FILE
-# VALIDATE $? "Daemon reload"
+systemctl daemon-reload
+VALIDATE $? "Daemon reload"
 
 # systemctl start backend &>>$LOG_FILE
 # VALIDATE $? "started Backend"
