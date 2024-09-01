@@ -69,22 +69,22 @@ VALIDATE $? "Extracting backend application code"
 npm install &>>$LOG_FILE
 cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
-# load the data before running backend
+# # load the data before running backend
 
-dnf install mysql -y &>>$LOG_FILE
-VALIDATE $? "Installing MySQL Client"
+# dnf install mysql -y &>>$LOG_FILE
+# VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
-VALIDATE $? "Schema loading"
+# mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+# VALIDATE $? "Schema loading"
 
-systemctl daemon-reload &>>$LOG_FILE
-VALIDATE $? "Daemon reload"
+# systemctl daemon-reload &>>$LOG_FILE
+# VALIDATE $? "Daemon reload"
 
-systemctl start backend &>>$LOG_FILE
-VALIDATE $? "started Backend"
+# systemctl start backend &>>$LOG_FILE
+# VALIDATE $? "started Backend"
 
-systemctl enable backend &>>$LOG_FILE
-VALIDATE $? "Enabled backend"
+# systemctl enable backend &>>$LOG_FILE
+# VALIDATE $? "Enabled backend"
 
-systemctl restart backend &>>$LOG_FILE
-VALIDATE $? "Restarted Backend"
+# systemctl restart backend &>>$LOG_FILE
+# VALIDATE $? "Restarted Backend"
