@@ -31,7 +31,7 @@ VALIDATE(){
 echo "Script start executed at: $(date) " | tee -a $LOG_FILE
 CHECK_ROOT
 
-dnf install mysql -y
+dnf install mysql-server -y
 VALIDATE $? "Installing mysql"
 
 systemctl enable mysqld
