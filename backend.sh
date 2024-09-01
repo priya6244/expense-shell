@@ -71,11 +71,11 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 
 # load the data before running backend
 
-dnf install mysql -y &>>$LOG_FILE
-VALIDATE $? "Installing MySQL Client"
+# dnf install mysql -y &>>$LOG_FILE
+# VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
-VALIDATE $? "Schema loading"
+# mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+# VALIDATE $? "Schema loading"
 
 # systemctl daemon-reload &>>$LOG_FILE
 # VALIDATE $? "Daemon reload"
