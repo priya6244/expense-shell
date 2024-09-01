@@ -40,7 +40,7 @@ VALIDATE $? "Enabling mysql"
 systemctl start mysqld
 VALIDATE $? "Starting mysql"
 
-mysql -h mysql.haridev.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
+mysql -h 172.31.38.51 -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
     echo "MySQL root password is not setup, setting now" &>>$LOG_FILE
