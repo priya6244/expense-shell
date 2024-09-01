@@ -63,7 +63,7 @@ VALIDATE $? "Downloading backend application code"
 
 cd /app
 rm -rf /app/* # remove the existing code
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting backend application code"
 
 npm install
@@ -72,23 +72,20 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 
 # # load the data before running backend
 
-dnf install mysql -y
+dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
 VALIDATE $? "Schema loading"
 
-systemctl daemon-reload
+systemctl daemon-reload &>>$LOG_FILE
 VALIDATE $? "Daemon reload"
 
-systemctl start backend
+systemctl start backend &>>$LOG_FILE
 VALIDATE $? "started Backend"
 
-systemctl enable backend
+systemctl enable backend &>>$LOG_FILE
 VALIDATE $? "Enabled backend"
 
-systemctl restart backend
+systemctl restart backend &>>$LOG_FILE
 VALIDATE $? "Restarted Backend"
-
-ip=$(telnet mysql.haridev.online)
-echo " $ip "
