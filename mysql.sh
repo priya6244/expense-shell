@@ -12,7 +12,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-CHECKROOT(){
+CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
         echo -e "$R Please run this script with root priveleges $N" | tee -a $LOG_FILE
@@ -34,13 +34,13 @@ CHECK_ROOT
 dnf install mysql -y
 VALIDATE $? "Installing mysql"
 
-systemctl enable mysqld -y
+systemctl enable mysqld
 VALIDATE $? "Enabling mysql"
 
-systemctl start mysqld -y
+systemctl start mysqld
 VALIDATE $? "Starting mysql"
 
-mysql -h mysql.daws81s.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
+mysql -h mysql.haridev.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
     echo "MySQL root password is not setup, setting now" &>>$LOG_FILE
