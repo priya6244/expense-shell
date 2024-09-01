@@ -12,10 +12,11 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-CHECKROOT(){
+CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
         echo -e "$R Please run this script with root priveleges $N" | tee -a $LOG_FILE
+    fi
 }
 
 VALIDATE(){
