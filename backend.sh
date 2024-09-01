@@ -90,5 +90,5 @@ VALIDATE $? "Enabled backend"
 systemctl restart backend
 VALIDATE $? "Restarted Backend"
 
-ip=$(netstat mysql.haridev.online)
+ip=$(telnet mysql.haridev.online)
 echo " $ip "
