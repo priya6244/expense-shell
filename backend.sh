@@ -40,11 +40,6 @@ VALIDATE $? "Enable nodejs:20"
 dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs"
 
-# systemctl enable nodejs -y
-# VALIDATE $? "Enabling nodejs"
-# systemctl start nodejs -y
-# VALIDATE $? "Starting nodejs"
-
 id expense &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
@@ -75,7 +70,7 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.haridev.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+mysql -h 172.31.22.194 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
 VALIDATE $? "Schema loading"
 
 systemctl daemon-reload &>>$LOG_FILE
